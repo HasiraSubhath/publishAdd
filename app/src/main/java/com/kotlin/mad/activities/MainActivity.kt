@@ -14,19 +14,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_ads_main)
 
 
         btnInsertData = findViewById(R.id.btnInsertData)
         btnFetchData = findViewById(R.id.btnFetchData)
 
         btnInsertData.setOnClickListener {
-            val intent = Intent(this, PaymentInsertionActivity::class.java)
+            val intent = Intent(this, AdsInsertionActivity::class.java)
             startActivity(intent)
         }
 
         btnFetchData.setOnClickListener {
-            val intent = Intent(this, PaymentFetchingActivity::class.java)
+            val intent = Intent(this, AdsFetchingActivity::class.java)
             startActivity(intent)
         }
 

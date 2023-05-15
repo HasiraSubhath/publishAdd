@@ -9,10 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.kotlin.mad.R
-import com.kotlin.mad.models.PaymentModel
+import com.kotlin.mad.models.AdsModel
 import com.google.firebase.database.FirebaseDatabase
 
-class PaymentDetailsActivity : AppCompatActivity() {
+class AdsDetailsActivity : AppCompatActivity() {
 
     private lateinit var tvPId: TextView
     private lateinit var tvPTitle: TextView
@@ -27,7 +27,7 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment_details)
+        setContentView(R.layout.activity_ads_details)
 
         initView()
         setValuesToViews()
@@ -56,7 +56,7 @@ class PaymentDetailsActivity : AppCompatActivity() {
         mTask.addOnSuccessListener {
             Toast.makeText(this, " data deleted", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, PaymentFetchingActivity::class.java)
+            val intent = Intent(this, AdsFetchingActivity::class.java)
             finish()
             startActivity(intent)
         }.addOnFailureListener{ error ->
@@ -98,7 +98,7 @@ class PaymentDetailsActivity : AppCompatActivity() {
     ) {
         val mDialog = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        val mDialogView = inflater.inflate(R.layout.update_dialog, null)
+        val mDialogView = inflater.inflate(R.layout.update_ads_dialog, null)
 
         mDialog.setView(mDialogView)
 
@@ -157,7 +157,7 @@ class PaymentDetailsActivity : AppCompatActivity() {
         price: String
     ){
         val dbRef = FirebaseDatabase.getInstance().getReference("AdsDB").child(id)
-        val adsInfo = PaymentModel(id, title, desc, mdate, edate, price)
+        val adsInfo = AdsModel(id, title, desc, mdate, edate, price)
         dbRef.setValue(adsInfo)
     }
 }

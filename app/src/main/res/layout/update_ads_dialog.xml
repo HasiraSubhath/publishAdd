@@ -20,10 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:maxLength="16"
+
         android:hint="Description"
         android:fontFamily="@font/tomorrow_medium"
-        android:inputType="number"/>
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/etPMdate"
@@ -33,9 +33,8 @@
         android:ems="10"
         android:hint="Manfactured Date"
 
-        android:maxLength="3"
         android:fontFamily="@font/tomorrow_medium"
-        android:inputType="textPersonName" />
+        android:inputType="date" />
 
     <EditText
         android:id="@+id/etPEdate"
@@ -44,10 +43,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Expiration Date"
-        android:maxLength="05"
-
         android:fontFamily="@font/tomorrow_medium"
-
         android:inputType="date"
 
         />
@@ -59,11 +55,8 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Price"
-        android:maxLength="05"
-
         android:fontFamily="@font/tomorrow_medium"
-
-        android:inputType="date"
+        android:inputType="number"
 
         />
 

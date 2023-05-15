@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.mad.R
-import com.kotlin.mad.models.PaymentModel
+import com.kotlin.mad.models.AdsModel
 
-class PaymentAdapter(private val paymentList: ArrayList<PaymentModel>) :
-    RecyclerView.Adapter<PaymentAdapter.ViewHolder>() {
+class AdsAdapter(private val paymentList: ArrayList<AdsModel>) :
+    RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -22,7 +22,7 @@ class PaymentAdapter(private val paymentList: ArrayList<PaymentModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.payment_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.ads_list_item, parent, false)
         return ViewHolder(itemView, mListener)
     }
 

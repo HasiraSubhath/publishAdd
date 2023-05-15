@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".activities.PaymentInsertionActivity">
+    tools:context=".activities.AdsInsertionActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -47,9 +47,9 @@
         android:layout_marginTop="28dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
-        android:maxLength="3"
+
         android:hint="Manufacture Date"
-        android:inputType="textPersonName"
+        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:fontFamily="@font/tomorrow_medium"
         android:hint=" Expiration Date"
         android:inputType="date"
-        android:maxLength="05"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +78,8 @@
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
         android:hint="Description"
-        android:maxLength="16"
-        android:inputType="number"
+
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,27 +90,29 @@
         android:id="@+id/etPPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:fontFamily="@font/tomorrow_medium"
         android:hint="Price"
         android:inputType="number"
-        android:maxLength="16"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCDate" />
+        app:layout_constraintTop_toBottomOf="@+id/etPEdate" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="51dp"
         android:backgroundTint="@color/Darkgreen"
         android:fontFamily="@font/tomorrow_medium"
         android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPEdate" />
+        app:layout_constraintTop_toBottomOf="@+id/etPPrice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

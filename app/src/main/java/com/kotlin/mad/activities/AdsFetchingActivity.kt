@@ -7,29 +7,29 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kotlin.mad.adapters.PaymentAdapter
-import com.kotlin.mad.models.PaymentModel
+import com.kotlin.mad.adapters.AdsAdapter
+import com.kotlin.mad.models.AdsModel
 import com.kotlin.mad.R
 import com.google.firebase.database.*
 
-class PaymentFetchingActivity : AppCompatActivity() {
+class AdsFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var paymentList: ArrayList<PaymentModel>
+    private lateinit var paymentList: ArrayList<AdsModel>
     private lateinit var dbRef: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment_fetching)
+        setContentView(R.layout.activity_ads_fetching)
 
         empRecyclerView = findViewById(R.id.rvEmp)
         empRecyclerView.layoutManager = LinearLayoutManager(this)
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        paymentList = arrayListOf<PaymentModel>()
+        paymentList = arrayListOf<AdsModel>()
 
         getAdsData()
 
@@ -48,16 +48,16 @@ class PaymentFetchingActivity : AppCompatActivity() {
                paymentList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val paymentData = empSnap.getValue(PaymentModel::class.java)
+                        val paymentData = empSnap.getValue(AdsModel::class.java)
                         paymentList.add(paymentData!!)
                     }
-                    val mAdapter = PaymentAdapter(paymentList)
+                    val mAdapter = AdsAdapter(paymentList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : PaymentAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : AdsAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@PaymentFetchingActivity, PaymentDetailsActivity::class.java)
+                            val intent = Intent(this@AdsFetchingActivity, AdsDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
                             intent.putExtra("pId", paymentList[position].pId)

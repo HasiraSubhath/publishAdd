@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.kotlin.mad.models.PaymentModel
+import com.kotlin.mad.models.AdsModel
 import com.kotlin.mad.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class PaymentInsertionActivity : AppCompatActivity() {
+class AdsInsertionActivity : AppCompatActivity() {
 
-    //initializing variables
+
 
     private lateinit var etPTitle: EditText
     private lateinit var etPDesc: EditText
@@ -26,7 +26,7 @@ class PaymentInsertionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_insertion)
+        setContentView(R.layout.activity_ads_insertion)
 
         etPTitle = findViewById(R.id.etPTitle)
         etPDesc = findViewById(R.id.etPDesc)
@@ -76,7 +76,7 @@ class PaymentInsertionActivity : AppCompatActivity() {
             //genrate unique ID
             val pId = dbRef.push().key!!
 
-            val payment = PaymentModel(pId, pTitle, pDesc, pMdate, pEdate, pPrice)
+            val payment = AdsModel(pId, pTitle, pDesc, pMdate, pEdate, pPrice)
 
             dbRef.child(pId).setValue(payment)
                 .addOnCompleteListener {

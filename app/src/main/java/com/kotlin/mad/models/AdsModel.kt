@@ -1,6 +1,6 @@
 package com.kotlin.mad.models
 
-data class PaymentModel(
+data class AdsModel(
     var pId: String? = null,
     var pTitle: String? = null,
     var pDesc: String? = null,
