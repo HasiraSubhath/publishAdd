@@ -1,10 +1,12 @@
 package com.kotlin.mad.models
 
 data class PaymentModel(
-    var cId: String? = null,
-    var cName: String? = null,
-    var cNumber: String? = null,
-    var cCvv: String? = null,
-    var cDate: String? = null
+    var pId: String? = null,
+    var pTitle: String? = null,
+    var pDesc: String? = null,
+    var pMdate: String? = null,
+    var pEdate: String? = null,
+    var pPrice: String? = null
+    
 
 )

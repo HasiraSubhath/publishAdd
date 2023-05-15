@@ -31,17 +31,17 @@ class PaymentFetchingActivity : AppCompatActivity() {
 
         paymentList = arrayListOf<PaymentModel>()
 
-        getPaymentData()
+        getAdsData()
 
 
     }
 
-    private fun getPaymentData() {
+    private fun getAdsData() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("AdsDB")
 
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -60,11 +60,12 @@ class PaymentFetchingActivity : AppCompatActivity() {
                             val intent = Intent(this@PaymentFetchingActivity, PaymentDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
-                            intent.putExtra("cId", paymentList[position].cId)
-                            intent.putExtra("cName", paymentList[position].cName)
-                            intent.putExtra("cNumber", paymentList[position].cNumber)
-                            intent.putExtra("cCvv", paymentList[position].cCvv)
-                            intent.putExtra("cDate", paymentList[position].cDate)
+                            intent.putExtra("pId", paymentList[position].pId)
+                            intent.putExtra("pTitle", paymentList[position].pTitle)
+                            intent.putExtra("pDesc", paymentList[position].pDesc)
+                            intent.putExtra("pMdate", paymentList[position].pMdate)
+                            intent.putExtra("pEdate", paymentList[position].pEdate)
+                            intent.putExtra("pPrice", paymentList[position].pPrice)
                             startActivity(intent)
                         }
 

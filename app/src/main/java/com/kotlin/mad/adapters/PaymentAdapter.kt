@@ -28,7 +28,7 @@ class PaymentAdapter(private val paymentList: ArrayList<PaymentModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentEmp = paymentList[position]
-        holder.tvCName.text = currentEmp.cName
+        holder.tvPTitle.text = currentEmp.pTitle
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +37,7 @@ class PaymentAdapter(private val paymentList: ArrayList<PaymentModel>) :
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
-        val tvCName : TextView = itemView.findViewById(R.id.tvCName)
+        val tvPTitle : TextView = itemView.findViewById(R.id.tvPTitle)
 
         init {
             itemView.setOnClickListener {

@@ -14,10 +14,11 @@ class PaymentInsertionActivity : AppCompatActivity() {
 
     //initializing variables
 
-    private lateinit var etCName: EditText
-    private lateinit var etCNumber: EditText
-    private lateinit var etCCvv: EditText
-    private lateinit var etCDate: EditText
+    private lateinit var etPTitle: EditText
+    private lateinit var etPDesc: EditText
+    private lateinit var etPMdate: EditText
+    private lateinit var etPEdate: EditText
+    private lateinit var etPPrice: EditText
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -27,60 +28,66 @@ class PaymentInsertionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insertion)
 
-        etCName = findViewById(R.id.etCName)
-        etCNumber = findViewById(R.id.etCNumber)
-        etCCvv = findViewById(R.id.etCCvv)
-        etCDate = findViewById(R.id.etCDate)
+        etPTitle = findViewById(R.id.etPTitle)
+        etPDesc = findViewById(R.id.etPDesc)
+        etPMdate = findViewById(R.id.etPMdate)
+        etPEdate = findViewById(R.id.etPEdate)
+        etPPrice = findViewById(R.id.etPPrice)
         btnSaveData = findViewById(R.id.btnSave)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("AdsDB")
 
         btnSaveData.setOnClickListener {
-            savePaymentData()
+            saveAdsData()
         }
 
     }
 
-    private fun savePaymentData() {
+    private fun saveAdsData() {
 
         //Geting Values
-        val cName = etCName.text.toString()
-        val cNumber = etCNumber.text.toString()
-        val cCvv = etCCvv.text.toString()
-        val cDate = etCDate.text.toString()
+        val pTitle = etPTitle.text.toString()
+        val pDesc = etPDesc.text.toString()
+        val pMdate = etPMdate.text.toString()
+        val pEdate = etPEdate.text.toString()
+        val pPrice = etPPrice.text.toString()
 
         //validation
-        if (cName.isEmpty() || cNumber.isEmpty() || cCvv.isEmpty() || cDate.isEmpty()) {
+        if (pTitle.isEmpty() || pDesc.isEmpty() || pMdate.isEmpty() || pEdate.isEmpty() || pPrice.isEmpty()) {
 
-            if (cName.isEmpty()) {
-                etCName.error = "Please enter Card Holders Name"
+            if (pTitle.isEmpty()) {
+                etPTitle.error = "Please enter Title"
             }
-            if (cNumber.isEmpty()) {
-                etCNumber.error = "Please Card Number"
+            if (pDesc.isEmpty()) {
+                etPDesc.error = "Please Description"
             }
-            if (cCvv.isEmpty()) {
-                etCCvv.error = "Please Enter CVV"
+            if (pMdate.isEmpty()) {
+                etPMdate.error = "Please Enter Manufacture Date"
             }
-            if (cDate.isEmpty()) {
-                etCDate.error = "Please Enter Expire year month"
+            if (pEdate.isEmpty()) {
+                etPEdate.error = "Please Enter Expire year month"
+            }
+            if (pEdate.isEmpty()) {
+                etPPrice.error = "Please Enter Price"
             }
             Toast.makeText(this, "please check Some areas are not filled", Toast.LENGTH_LONG).show()
         } else {
 
             //genrate unique ID
-            val cId = dbRef.push().key!!
+            val pId = dbRef.push().key!!
 
-            val payment = PaymentModel(cId, cName, cNumber, cCvv, cDate)
+            val payment = PaymentModel(pId, pTitle, pDesc, pMdate, pEdate, pPrice)
 
-            dbRef.child(cId).setValue(payment)
+            dbRef.child(pId).setValue(payment)
                 .addOnCompleteListener {
-                    Toast.makeText(this, "All card details insert successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Details insert successfully", Toast.LENGTH_SHORT).show()
 
                     //clear data after insert
-                    etCName.text.clear()
-                    etCNumber.text.clear()
-                    etCCvv.text.clear()
-                    etCDate.text.clear()
+                    etPTitle.text.clear()
+                    etPDesc.text.clear()
+                    etPMdate.text.clear()
+                    etPEdate.text.clear()
+                    etPPrice.text.clear()
 
 
                 }.addOnFailureListener { err ->

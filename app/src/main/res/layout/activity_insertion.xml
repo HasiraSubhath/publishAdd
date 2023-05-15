@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etCName"
+        android:id="@+id/etPTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/etCCvv"
+        android:id="@+id/etPMdate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -53,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/etPDesc" />
 
     <EditText
-        android:id="@+id/etCDate"
+        android:id="@+id/etPEdate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
@@ -68,10 +68,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCCvv" />
+        app:layout_constraintTop_toBottomOf="@+id/etPMdate" />
 
     <EditText
-        android:id="@+id/etCNumber"
+        android:id="@+id/etPDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCName" />
+        app:layout_constraintTop_toBottomOf="@+id/etPTitle" />
 
     <Button
         android:id="@+id/btnSave"
@@ -95,6 +95,6 @@
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCDate" />
+        app:layout_constraintTop_toBottomOf="@+id/etPEdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

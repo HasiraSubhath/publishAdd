@@ -107,7 +107,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvCId"
+                    android:id="@+id/tvPId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -157,7 +157,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvCName"
+                    android:id="@+id/tvPTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -211,7 +211,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvCNumber"
+                    android:id="@+id/tvPDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -266,7 +266,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvCCvv"
+                    android:id="@+id/tvPMdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -320,7 +320,7 @@
                 android:layout_weight="1.4">
 
                 <TextView
-                    android:id="@+id/tvCDate"
+                    android:id="@+id/tvPEdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

@@ -14,11 +14,12 @@ import com.google.firebase.database.FirebaseDatabase
 
 class PaymentDetailsActivity : AppCompatActivity() {
 
-    private lateinit var tvCId: TextView
-    private lateinit var tvCName: TextView
-    private lateinit var tvCNumber: TextView
-    private lateinit var tvCCvv: TextView
-    private lateinit var tvCDate: TextView
+    private lateinit var tvPId: TextView
+    private lateinit var tvPTitle: TextView
+    private lateinit var tvPDesc: TextView
+    private lateinit var tvPMdate: TextView
+    private lateinit var tvPEdate: TextView
+    private lateinit var tvPPrice: TextView
 
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
@@ -33,14 +34,14 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
         btnUpdate.setOnClickListener {
             openUpdateDialog(
-                intent.getStringExtra("cId").toString(),
-                intent.getStringExtra("cName").toString()
+                intent.getStringExtra("pId").toString(),
+                intent.getStringExtra("pTitle").toString()
             )
         }
 
         btnDelete.setOnClickListener {
             deleteRecord(
-                intent.getStringExtra("cId").toString()
+                intent.getStringExtra("pId").toString()
             )
         }
 
@@ -49,7 +50,7 @@ class PaymentDetailsActivity : AppCompatActivity() {
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("AdsDB").child(id)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
@@ -68,11 +69,12 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
 
     private fun initView() {
-        tvCId = findViewById(R.id.tvCId)
-        tvCName = findViewById(R.id.tvCName)
-        tvCNumber = findViewById(R.id.tvCNumber)
-        tvCCvv = findViewById(R.id.tvCCvv)
-        tvCDate = findViewById(R.id.tvCDate)
+        tvPId = findViewById(R.id.tvPId)
+        tvPTitle = findViewById(R.id.tvPTitle)
+        tvPDesc = findViewById(R.id.tvPDesc)
+        tvPMdate = findViewById(R.id.tvPMdate)
+        tvPEdate = findViewById(R.id.tvPEdate)
+        tvPPrice = findViewById(R.id.tvPPrice)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -80,17 +82,18 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
     private fun setValuesToViews() {
         //passing data
-        tvCId.text = intent.getStringExtra("cId")
-        tvCName.text = intent.getStringExtra("cName")
-        tvCNumber.text = intent.getStringExtra("cNumber")
-        tvCCvv.text = intent.getStringExtra("cCvv")
-        tvCDate.text = intent.getStringExtra("cDate")
+        tvPId.text = intent.getStringExtra("pId")
+        tvPTitle.text = intent.getStringExtra("pTitle")
+        tvPDesc.text = intent.getStringExtra("pDesc")
+        tvPMdate.text = intent.getStringExtra("pMdate")
+        tvPEdate.text = intent.getStringExtra("pEdate")
+        tvPPrice.text = intent.getStringExtra("pPrice")
 
     }
 
     private fun openUpdateDialog(
-        cId: String,
-        cName: String
+        pId: String,
+        pTitle: String
 
     ) {
         val mDialog = AlertDialog.Builder(this)
@@ -99,41 +102,45 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
         mDialog.setView(mDialogView)
 
-        val etCName = mDialogView.findViewById<EditText>(R.id.etCName)
-        val etCNumber = mDialogView.findViewById<EditText>(R.id.etCNumber)
-        val etCCvv = mDialogView.findViewById<EditText>(R.id.etCCvv)
-        val etCDate = mDialogView.findViewById<EditText>(R.id.etCDate)
+        val etPTitle = mDialogView.findViewById<EditText>(R.id.etPTitle)
+        val etPDesc = mDialogView.findViewById<EditText>(R.id.etPDesc)
+        val etPMdate = mDialogView.findViewById<EditText>(R.id.etPMdate)
+        val etPEdate = mDialogView.findViewById<EditText>(R.id.etPEdate)
+        val etPPrice = mDialogView.findViewById<EditText>(R.id.etPPrice)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         //update
-        etCName.setText(intent.getStringExtra("cName").toString())
-        etCNumber.setText(intent.getStringExtra("cNumber").toString())
-        etCCvv.setText(intent.getStringExtra("cCvv").toString())
-        etCDate.setText(intent.getStringExtra("cDate").toString())
+        etPTitle.setText(intent.getStringExtra("pTitle").toString())
+        etPDesc.setText(intent.getStringExtra("pDesc").toString())
+        etPMdate.setText(intent.getStringExtra("pMdate").toString())
+        etPEdate.setText(intent.getStringExtra("pEdate").toString())
+        etPPrice.setText(intent.getStringExtra("pPrice").toString())
 
-        mDialog.setTitle("Updating $cName Record")
+        mDialog.setTitle("Updating $pTitle Record")
 
         val alertDialog = mDialog.create()
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
-            updatePaymentData(
-                cId,
-                etCName.text.toString(),
-                etCNumber.text.toString(),
-                etCCvv.text.toString(),
-                etCDate.text.toString()
+            updateAdsData(
+                pId,
+                etPTitle.text.toString(),
+                etPDesc.text.toString(),
+                etPMdate.text.toString(),
+                etPEdate.text.toString(),
+                etPPrice.text.toString()
 
             )
 
             Toast.makeText(applicationContext, " Data Updated", Toast.LENGTH_LONG).show()
 
             //we are setting updated data to our text views
-            tvCName.text = etCName.text.toString()
-            tvCNumber.text = etCNumber.text.toString()
-            tvCCvv.text = etCCvv.text.toString()
-            tvCDate.text = etCDate.text.toString()
+            tvPTitle.text = etPTitle.text.toString()
+            tvPDesc.text = etPDesc.text.toString()
+            tvPMdate.text = etPMdate.text.toString()
+            tvPEdate.text = etPEdate.text.toString()
+            tvPPrice.text = etPPrice.text.toString()
 
             alertDialog.dismiss()
 
@@ -141,15 +148,16 @@ class PaymentDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun updatePaymentData(
+    private fun updateAdsData(
         id: String,
-        name: String,
-        number: String,
-        cvv: String,
-        date: String
+        title: String,
+        desc: String,
+        mdate: String,
+        edate: String,
+        price: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB").child(id)
-        val paymentIno = PaymentModel(id, name, number, cvv, date)
-        dbRef.setValue(paymentIno)
+        val dbRef = FirebaseDatabase.getInstance().getReference("AdsDB").child(id)
+        val adsInfo = PaymentModel(id, title, desc, mdate, edate, price)
+        dbRef.setValue(adsInfo)
     }
 }
